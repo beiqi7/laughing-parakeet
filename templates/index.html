@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创意写作助手</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <i class="fas fa-feather-alt"></i>
+                    创意写作助手
+                <span class="subtitle">让AI激发你的写作灵感</span>
+                </h1>
+                <div class="header-actions">
+                    <button id="saveBtn" class="btn btn-secondary">
+                        <i class="fas fa-save"></i>
+                        保存
+                    </button>
+                    <button id="loadBtn" class="btn btn-secondary">
+                        <i class="fas fa-folder-open"></i>
+                        加载
+                    </button>
+                    <button id="clearBtn" class="btn btn-secondary">
+                        <i class="fas fa-trash"></i>
+                        清空
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="editor-section">
+                <div class="editor-header">
+                    <h2>写作区</h2>
+                    <div class="editor-stats">
+                        <span id="wordCount">0 字</span>
+                        <span id="paragraphCount">0 段</span>
+                    </div>
+                </div>
+                <div class="editor-container">
+                    <div id="editor" contenteditable="true" class="text-editor" placeholder="开始你的创意写作..."></div>
+                </div>
+            </div>
+
+            <div class="suggestions-section">
+                <div class="suggestions-header">
+                    <h2>AI 建议</h2>
+                    <button id="generateBtn" class="btn btn-primary">
+                        <i class="fas fa-magic"></i>
+                        生成建议
+                    </button>
+                </div>
+                <div id="suggestionsContainer" class="suggestions-container">
+                    <div class="suggestion-placeholder">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>在写作区输入文本后，点击"生成建议"按钮，AI将为你提供情节转折和角色发展建议。</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>AI正在思考中...</p>
+            </div>
+        </div>
+
+        <div id="errorModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>错误</h3>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="errorMessage"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
